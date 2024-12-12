@@ -17,14 +17,14 @@ const Weather = ({country}) => {
     }, [country])
 
     return (
-        <div>
+        <div style={{marginTop: "20px"}}>
         <h2>Weather in {country.name.common}</h2>
 
         {(weather1) && (
             <div> 
-                <p>temperature {weather1.main.temp} Celcius</p>
+                <p style={{fontSize: "20px"}}>Temperature {weather1.main.temp} Celcius</p>
                 <img src={`https://openweathermap.org/img/wn/${weather1.weather[0].icon}@2x.png`} alt= {weather1.weather[0].description}/>
-                <p>wind {weather1.wind.speed} m/s</p>
+                <p style={{fontSize: "20px"}}>Wind {weather1.wind.speed} m/s</p>
             </div>
          )
         }

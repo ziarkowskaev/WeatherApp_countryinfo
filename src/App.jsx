@@ -110,21 +110,21 @@ const App = () => {
       {countries.length == 1 && (
         <div>
             <h2>{countries[0].name.common}</h2>
-            <p>Capital: {countries[0].capital}</p>
-            <p>Area: {countries[0].area}</p>
+            <p style={{fontSize: "20px"}}>Capital: {countries[0].capital}</p>
+            <p style={{fontSize: "20px"}}>Area: {countries[0].area}</p>
 
             <h3>Languages:</h3>
 
             <ul>
                 {Object.entries(countries[0].languages).map(([code, language]) => (
-                  <li key={code}>
+                  <li key={code} style={{fontSize: "20px"}}>
                     {language}
                   </li>
                 ))} 
             </ul>
-            <Weather country = {countries[0]} />
+            
             <img src = {countries[0].flags.svg} alt= {countries[0].flags.alt}/>
-       
+            <Weather country = {countries[0]} />
      </div>
       )}
 
