@@ -31,36 +31,74 @@ const App = () => {
 
 
   return (
-    <div>
-      <form>
-        find countries: <input value={value} onChange={handleChange} />
-      </form>
+    <div >
+        <form
+          style={{
+            marginBottom: "1em",
+            border: "5px solid #04688a",
+            borderRadius: "10px",
+            padding: "10px",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          <h3 style={{ margin: 0 }}>Find countries:</h3>
+          <input value={value} onChange={handleChange} style={{ padding: "5px", borderRadius: "5px", border: "1px solid #ccc" }} />
+        </form>
+      <div style={{border: "5px solid #28a7d1", borderRadius: "10px", padding: "10px" }}>
 
 {/* less than 10 countries display list of countries with button search */}
-      {(countries.length <= 10 && countries.length > 1) && (
-      <ul>
-          {countries.map((country) => 
-            <li key={country.name.common}>{country.name.common}<button onClick={() => handleSetCountry(country)}>show</button></li>
-            )}
-       </ul>
-      )}
+{(countries.length <= 10 && countries.length > 1) && (
+  <ul style={{ listStyleType: "none", padding: 0, margin: "10px 0" }}>
+    {countries.map((country) => (
+      <li
+        key={country.name.common}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "8px",
+          borderBottom: "1px solid #ccc",
+        }}
+      >
+        <span style={{fontSize: "20px"}}>{country.name.common}</span>
+        <button
+          onClick={() => handleSetCountry(country)}
+          style={{
+            backgroundColor: "#04688a",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            padding: "5px 10px",
+            cursor: "pointer",
+          }}
+        >
+          Show
+        </button>
+      </li>
+    ))}
+  </ul>
+)}
+
 
 {/* more than 10 */}
       {countries.length > 10 && (
-        <p>Too many countries to display. Narrow your search.</p>
+        <p style={{fontSize: "20px"}}>Too many countries to display. Narrow your search.</p>
       )}
 
 {/* country was selected with show button */}
   {selectedCountry && (
         <div>
           <h2>{selectedCountry.name.common}</h2>
-          <p>Capital: {selectedCountry.capital}</p>
-          <p>Area: {selectedCountry.area}</p>
+          <p style={{fontSize: "20px"}}>Capital: {selectedCountry.capital}</p>
+          <p style={{fontSize: "20px"}}>Area: {selectedCountry.area}</p>
 
           <h3>Languages:</h3>
           <ul>
             {Object.values(selectedCountry.languages).map(language => (
-              <li key={language}>{language}</li>
+              <li key={language} style={{fontSize: "20px"}}>{language}</li>
             ))}
           </ul>
 
@@ -94,6 +132,9 @@ const App = () => {
       {countries.length == 0 && (
         <p>No results your search.</p>
       )}
+        
+      </div>
+
     </div>
   )
 }
